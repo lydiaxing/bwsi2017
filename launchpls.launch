@@ -1,0 +1,13 @@
+<launch>
+	<include file = "home/ar_localization/launch/localize.launch"/>
+	<include file = "/home/ar_localization/launch/ar_tracker.launch"/>
+	<include file = "/home/racecar/racecar-ws/src/racecar/racecar/launch/teleop.launch"/>
+	<include file = "/home/racecar/racecar-ws/src/zed-ros-wrapper/launch/zed.launch"/>
+	<include file = "/home/racecar/racecar-ws/src/line_follower/launch/ControlNode.launch"/>
+	<include file = "/home/racecar/racecar-ws/src/line_follower/launch/VisionNode.launch"/>
+
+	<node name="ARStateChanger" pkg="line_follower" type="state_finneser.py" respawn="true"/>
+	<node name="StateMachineNode" pkg="line_follower" type="stateMachine.py" respawn="true"/>
+	<node name="LocalPotentialField" pkg="line_follower" type="local_potential.py" respawn="true"/>
+	<node name="WallFollowNode" pkg="line_follower" type="wall_follow.py" respawn="true"/>
+</launch>
